@@ -1,0 +1,561 @@
+﻿<!doctype html>
+<html lang="en">
+    
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="./css/font-awesome.min.css">
+        <link rel="stylesheet" href="./css/player_ranking.min2.css">
+        <style>
+            .card {
+                padding-top: 20px;
+                margin: 10px 0 20px 0;
+                background-color: rgba(214, 224, 226, 0.2);
+                border-top-width: 0;
+                border-bottom-width: 2px;
+                -webkit-border-radius: 3px;
+                -moz-border-radius: 3px;
+                border-radius: 3px;
+                -webkit-box-shadow: none;
+                -moz-box-shadow: none;
+                box-shadow: none;
+                -webkit-box-sizing: border-box;
+                -moz-box-sizing: border-box;
+                box-sizing: border-box;
+            }
+            .card .card-heading {
+                padding: 0 20px;
+                margin: 0;
+            }
+            .card .card-heading.simple {
+                font-size: 20px;
+                font-weight: 300;
+                color: #777;
+                border-bottom: 1px solid #e5e5e5;
+            }
+            .card .card-heading.image img {
+                display: inline-block;
+                width: 46px;
+                height: 46px;
+                margin-right: 15px;
+                vertical-align: top;
+                border: 0;
+                -webkit-border-radius: 50%;
+                -moz-border-radius: 50%;
+                border-radius: 50%;
+            }
+            .card .card-heading.image .card-heading-header {
+                display: inline-block;
+                vertical-align: top;
+            }
+            .card .card-heading.image .card-heading-header h3 {
+                margin: 0;
+                font-size: 14px;
+                line-height: 16px;
+                color: #262626;
+            }
+            .card .card-heading.image .card-heading-header span {
+                font-size: 12px;
+                color: #999999;
+            }
+            .card .card-body {
+                padding: 0 20px;
+                margin-top: 20px;
+            }
+            .card .card-media {
+                padding: 0 20px;
+                margin: 0 -14px;
+            }
+            .card .card-media img {
+                max-width: 100%;
+                max-height: 100%;
+            }
+            .card .card-actions {
+                min-height: 30px;
+                padding: 0 20px 20px 20px;
+                margin: 20px 0 0 0;
+            }
+            .card .card-comments {
+                padding: 20px;
+                margin: 0;
+                background-color: #f8f8f8;
+            }
+            .card .card-comments .comments-collapse-toggle {
+                padding: 0;
+                margin: 0 20px 12px 20px;
+            }
+            .card .card-comments .comments-collapse-toggle a, .card .card-comments .comments-collapse-toggle span {
+                padding-right: 5px;
+                overflow: hidden;
+                font-size: 12px;
+                color: #999;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+            }
+            .card-comments .media-heading {
+                font-size: 13px;
+                font-weight: bold;
+            }
+            .card.people {
+                position: relative;
+                display: inline-block;
+                width: 170px;
+                height: 300px;
+                padding-top: 0;
+                margin-left: 20px;
+                overflow: hidden;
+                vertical-align: top;
+            }
+            .card.people:first-child {
+                margin-left: 0;
+            }
+            .card.people .card-top {
+                position: absolute;
+                top: 0;
+                left: 0;
+                display: inline-block;
+                width: 170px;
+                height: 150px;
+                background-color: #ffffff;
+            }
+            .card.people .card-top.green {
+                background-color: #53a93f;
+            }
+            .card.people .card-top.blue {
+                background-color: #427fed;
+            }
+            .card.people .card-info {
+                position: absolute;
+                top: 150px;
+                display: inline-block;
+                width: 100%;
+                height: 101px;
+                overflow: hidden;
+                background: #ffffff;
+                -webkit-box-sizing: border-box;
+                -moz-box-sizing: border-box;
+                box-sizing: border-box;
+            }
+            .card.people .card-info .title {
+                display: block;
+                margin: 8px 14px 0 14px;
+                overflow: hidden;
+                font-size: 16px;
+                font-weight: bold;
+                line-height: 18px;
+                color: #404040;
+            }
+            .card.people .card-info .desc {
+                display: block;
+                margin: 8px 14px 0 14px;
+                overflow: hidden;
+                font-size: 12px;
+                line-height: 16px;
+                color: #737373;
+                text-overflow: ellipsis;
+            }
+            .card.people .card-bottom {
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                display: inline-block;
+                width: 100%;
+                padding: 10px 20px;
+                line-height: 29px;
+                text-align: center;
+                -webkit-box-sizing: border-box;
+                -moz-box-sizing: border-box;
+                box-sizing: border-box;
+            }
+            .card.hovercard {
+                position: relative;
+                padding-top: 0;
+                overflow: hidden;
+                text-align: center;
+                background-color: rgba(214, 224, 226, 0.2);
+            }
+            .card.hovercard .mewn {
+                background: url("http://i.imgur.com/5uH0TWi.png");
+                background-size: cover;
+                height: 135px;
+            }
+            .card.hovercard .myback {
+                background: url("http://i.imgur.com/zwGmhoH.png");
+                background-size: cover;
+                height: 135px;
+            }
+            .card.hovercard .jamal {
+                background: url("http://i.imgur.com/FLPKfof.png");
+                background-size: cover;
+                height: 135px;
+            }
+            .card.hovercard .gnome {
+                background: url("http://i.imgur.com/tLvALgX.png");
+                background-size: cover;
+                height: 135px;
+            }
+            .card.hovercard .razor {
+                background: url("http://i.imgur.com/29vgBAS.png");
+                background-size: cover;
+                height: 135px;
+            }
+            .card.hovercard .avatar {
+                position: relative;
+                top: -50px;
+                margin-bottom: -50px;
+            }
+            .card.hovercard .avatar img {
+                width: 100px;
+                height: 100px;
+                max-width: 100px;
+                max-height: 100px;
+                -webkit-border-radius: 50%;
+                -moz-border-radius: 50%;
+                border-radius: 50%;
+                border: 5px solid rgba(255, 255, 255, 0.5);
+            }
+            .card.hovercard .info {
+                padding: 4px 8px 10px;
+            }
+            .card.hovercard .info .title {
+                margin-bottom: 4px;
+                font-size: 24px;
+                line-height: 1;
+                color: #262626;
+                vertical-align: middle;
+            }
+            .card.hovercard .info .desc {
+                overflow: hidden;
+                font-size: 17px;
+                line-height: 20px;
+                color: #c4b69b;
+                text-overflow: ellipsis;
+            }
+            .card.hovercard .bottom {
+                padding: 0 20px;
+                margin-bottom: 17px;
+            }
+            .btn {
+                border-radius: 50%;
+                width:32px;
+                height:32px;
+                line-height:18px;
+            }
+        </style>
+    </head>
+    
+    <body>
+        <div id="baseSingleBodyWrapper">
+            <div class="rankingWrapper" style="height:1750px;">
+                <div class="search_result_wrapper" style="display: block">
+                     <h3><center>Staff List<span class="rank_date">As of 9/11/15-Never Forget | Click on SteamID to see player's stats</center></span></h3>
+
+                    <table class="ranking_tbl" summary="">
+                        <colgroup>
+                            <col width="80">
+                                <col width="250">
+                                    <col width="100">
+                                        <col width="150">
+                                            <col width="100">
+                                                <col width="100">
+                                                    <col width="280">
+                        </colgroup>
+                        <thead>
+                            <th>Name</th>
+                            <th>Rank</th>
+                            <th>Steam ID</th>
+                            <th>Image</th>
+                            <th>MSG Profile</th>
+                        </thead>
+                        <tbody>
+                            <div style="text-align: center">
+                                <div class="container" style="overflow: hidden">
+                                    <div style="float:left; width: 50%">
+                                        <div class="row">
+                                            <div class="col-lg-3 col-sm-6">
+                                                <div class="card hovercard">
+                                                    <div class="mewn"></div>
+                                                    <div class="avatar">
+                                                        <img alt="mewn" src="./img/mewn.jpg">
+                                                    </div>
+                                                    <div class="info">
+                                                        <div class="title"> <a target="_blank" href="http://steamcommunity.com/profiles/76561198030414692">Mewn</a>
+
+                                                        </div>
+                                                        <div class="desc">Owner and founder of Moonshade Gaming</div>
+                                                        <div class="desc"><a href="http://csgo-stats.com/76561198030414692" target="_blank"><strong>STEAM_0:0:35074482</strong></a>
+                                                        </div>
+                                                    </div>
+                                                    <div class="bottom"> <a class="btn btn-warning btn-sm" rel="publisher" href="http://moonshade.net/index.php?action=profile;u=3">
+                       🌙
+                    </a>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-lg-3 col-sm-6">
+                                                <div class="card hovercard">
+                                                    <div class="myback"></div>
+                                                    <div class="avatar">
+                                                        <img alt="myback" src="./img/myback.jpg">
+                                                    </div>
+                                                    <div class="info">
+                                                        <div class="title"> <a target="_blank" href="http://steamcommunity.com/profiles/76561198036428993">MyBack</a>
+
+                                                        </div>
+                                                        <div class="desc">Co-Owner and Lead Developer of Moonshade Gaming</div>
+                                                        <div class="desc"><a href="http://csgo-stats.com/76561198036428993" target="_blank"><strong>STEAM_0:1:38081632</strong></a>
+                                                        </div>
+                                                    </div>
+                                                    <div class="bottom"> <a class="btn btn-warning btn-sm" rel="publisher" href="http://moonshade.net/index.php?action=profile;u=1">
+                       🌙
+                    </a>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div style="text-align: center">
+                                        <div class="container" style="overflow: hidden">
+                                            <div style="float:left; width: 50%">
+                                                <div class="row">
+                                                    <div class="col-lg-3 col-sm-6">
+                                                        <div class="card hovercard">
+                                                            <div class="jamal"></div>
+                                                            <div class="avatar">
+                                                                <img alt="jamal" src="./img/jamal.png">
+                                                            </div>
+                                                            <div class="info">
+                                                                <div class="title"> <a target="_blank" href="http://steamcommunity.com/profiles/76561198074625962">King of KFC Jamal</a>
+
+                                                                </div>
+                                                                <div class="desc">Co-Owner and Head Admin of Moonshade Gaming</div>
+                                                                <div class="desc"><a href="http://csgo-stats.com/76561198074625962" target="_blank"><strong>STEAM_0:0:57180117</strong></a>
+                                                                </div>
+                                                            </div>
+                                                            <div class="bottom"> <a class="btn btn-warning btn-sm" rel="publisher" href="http://moonshade.net/index.php?action=profile;u=5">
+                       🌙
+                    </a>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="container">
+                                                <div class="row">
+                                                    <div class="col-lg-3 col-sm-6">
+                                                        <div class="card hovercard">
+                                                            <div class="gnome"></div>
+                                                            <div class="avatar">
+                                                                <img alt="gnome" src="./img/gnome.jpg">
+                                                            </div>
+                                                            <div class="info">
+                                                                <div class="title"> <a target="_blank" href="http://steamcommunity.com/profiles/76561198258727825">Gnome</a>
+
+                                                                </div>
+                                                                <div class="desc">Community Manager of Moonshade Gaming</div>
+                                                                <div class="desc"><a href="http://csgo-stats.com/76561198258727825" target="_blank"><strong>STEAM_0:0:59685791</strong></a>
+                                                                </div>
+                                                            </div>
+                                                            <div class="bottom"> <a class="btn btn-warning btn-sm" rel="publisher" href="http://moonshade.net/index.php?action=profile;u=110">
+                       🌙
+                    </a>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!--<div class="container">
+	<div class="row">
+		<div class="col-lg-3 col-sm-6">
+
+            <div class="card hovercard">
+                <div class="razor">
+
+                </div>
+                <div class="avatar">
+                    <img alt="razor" src="./img/razor.jpg">
+                </div>
+                <div class="info">
+                    <div class="title">
+                        <a target="_blank" href="http://steamcommunity.com/id/Ratchetdude">SirRazor</a>
+                    </div>
+                    <div class="desc">Super Admin of Moonshade Gaming</div>
+                    <div class="desc">STEAM_0:0:24209399</div>
+                </div>
+                <div class="bottom">
+                    <a class="btn btn-warning btn-sm" rel="publisher" href="http://moonshade.net/index.php?action=profile;u=68">
+                       🌙
+                    </a>
+                </div>
+            </div>
+
+        </div>
+
+	</div>
+</div>
+
+
+-->
+                                            <td><a href="http://steamcommunity.com/profiles/76561198008684526">SirRazor</a>
+                                            </td>
+                                            <td>Super Admin</td>
+                                            <td><a href="http://csgo-stats.com/76561198008684526" target="_blank"><strong>STEAM_0:0:24209399</strong></a>
+                                            </td>
+                                            <td>
+                                                <img src="./img/razor.jpg" alt="razor" style="width:48px;height:48px;">
+                                            </td>
+                                            <td><a class="btn btn-warning btn-sm" rel="publisher" href="http://moonshade.net/index.php?action=profile;u=68">
+                       🌙
+                    </a>
+                                            </td>
+                                            </tr>
+                                            <td><a href="http://steamcommunity.com/profiles/76561198097022486">Sealz</a>
+                                            </td>
+                                            <td>Basic Admin</td>
+                                            <td><a href="http://csgo-stats.com/76561198097022486" target="_blank"><strong>STEAM_0:0:68378379</strong></a>
+                                            </td>
+                                            <td>
+                                                <img src="./img/sealz.jpg" alt="sealz" style="width:48px;height:48px;">
+                                            </td>
+                                            <td><a class="btn btn-warning btn-sm" rel="publisher" href="http://moonshade.net/index.php?action=profile;u=285">
+                       🌙
+                    </a>
+                                            </td>
+                                            </tr>
+                                            
+                                            <td><a href="http://steamcommunity.com/profiles/76561198186941031">Magical Turtle</a>
+                                            </td>
+                                            <td>Basic Admin</td>
+                                            <td><a href="http://csgo-stats.com/76561198186941031" target="_blank"><strong>STEAM_0:1:113337651</strong></a>
+                                            </td>
+                                            <td>
+                                                <img src="./img/turtle.jpg" alt="turtle" style="width:48px;height:48px;">
+                                            </td>
+                                            <td><a class="btn btn-warning btn-sm" rel="publisher" href="http://moonshade.net/index.php?action=profile;u=291">
+                       🌙
+                    </a>
+                                            </td>
+                                            </tr>
+                                            
+                                            <td><a href="http://steamcommunity.com/profiles/76561198198608603">Chris</a>
+                                            </td>
+                                            <td>Basic Admin</td>
+                                            <td><a href="http://csgo-stats.com/76561198198608603" target="_blank"><strong>STEAM_0:1:119171437</strong></a>
+                                            </td>
+                                            <td>
+                                                <img src="./img/chris.jpg" alt="chris" style="width:48px;height:48px;">
+                                            </td>
+                                            <td><a class="btn btn-warning btn-sm" rel="publisher" href="http://moonshade.net/index.php?action=profile;u=103">
+                       🌙
+                    </a>
+                                            </td>
+                                            </tr>
+                                            <td><a href="http://steamcommunity.com/profiles/76561198066007143">Sheckles</a>
+                                            </td>
+                                            <td>Basic Admin</td>
+                                            <td><a href="http://csgo-stats.com/76561198066007143" target="_blank"><strong>STEAM_0:1:52870707</strong></a>
+                                            </td>
+                                            <td>
+                                                <img src="./img/meme.jpg" alt="meme" style="width:48px;height:48px;">
+                                            </td>
+                                            <td><a class="btn btn-warning btn-sm" rel="publisher" href="http://moonshade.net/index.php?action=profile;u=295">
+                       🌙
+                    </a>
+                                            </td>
+                                            </tr>
+                                            <td><a href="http://steamcommunity.com/profiles/76561198091369754/">Saeko Cat</a>
+                                            </td>
+                                            <td>Basic Admin</td>
+                                            <td><a href="http://csgo-stats.com/76561198091369754" target="_blank"><strong>STEAM_0:0:65552013</strong></a>
+                                            </td>
+                                            <td>
+                                                <img src="./img/cat.jpg" alt="cat" style="width:48px;height:48px;">
+                                            </td>
+                                            <td><a class="btn btn-warning btn-sm" rel="publisher" href="http://moonshade.net/index.php?action=profile;u=269">
+                       🌙
+                    </a>
+                                            </td>
+                                            </tr>
+                                            <td><a href="http://steamcommunity.com/profiles/76561198202253896/">Darek</a>
+                                            </td>
+                                            <td>Basic Admin</td>
+                                            <td><a href="http://csgo-stats.com/76561198202253896" target="_blank"><strong>STEAM_0:0:120994084</strong></a>
+                                            </td>
+                                            <td>
+                                                <img src="./img/darek.jpg" alt="darek" style="width:48px;height:48px;">
+                                            </td>
+                                            <td><a class="btn btn-warning btn-sm" rel="publisher" href="http://moonshade.net/index.php?action=profile;u=367">
+                       🌙
+                    </a>
+                                            </td>
+                                            </tr>
+                                            
+                                            <td><a href="http://steamcommunity.com/profiles/76561198135131007">Javert</a>
+                                            </td>
+                                            <td>Basic Admin</td>
+                                            <td><a href="http://csgo-stats.com/76561198135131007" target="_blank"><strong>STEAM_0:1:87432639</strong></a>
+                                            </td>
+                                            <td>
+                                                <img src="./img/javert.jpg" alt="javert" style="width:48px;height:48px;">
+                                            </td>
+                                            <td><a class="btn btn-warning btn-sm" rel="publisher" href="http://moonshade.net/index.php?action=profile;u=255">
+                       🌙
+                    </a>
+                                            </td>
+                                            </tr>
+                                            <td><a href="http://steamcommunity.com/profiles/76561198073064372">Ken</a>
+                                            </td>
+                                            <td>Basic Admin</td>
+                                            <td><a href="http://csgo-stats.com/76561198073064372" target="_blank"><strong>STEAM_0:0:56399322</strong></a>
+                                            </td>
+                                            <td>
+                                                <img src="./img/ken.jpg" alt="ken" style="width:48px;height:48px;">
+                                            </td>
+                                            <td><a class="btn btn-warning btn-sm" rel="publisher" href="http://moonshade.net/index.php?action=profile;u=380">
+                       🌙
+                    </a>
+                                            </td>
+                                            </tr>
+                                            <td><a href="http://steamcommunity.com/profiles/76561197972437550/">Jackelz</a>
+                                            </td>
+                                            <td>Basic Admin</td>
+                                            <td><a href="http://csgo-stats.com/76561197972437550" target="_blank"><strong>STEAM_0:0:6085911</strong></a>
+                                            </td>
+                                            <td>
+                                                <img src="./img/jack.jpg" alt="jack" style="width:48px;height:48px;">
+                                            </td>
+                                            <td><a class="btn btn-warning btn-sm" rel="publisher" href="http://moonshade.net/index.php?action=profile;u=442">
+                       🌙
+                    </a>
+                                            </td>
+                                            </tr>
+                                            <td><a href="http://steamcommunity.com/profiles/76561198175277497/">Bish Whet</a>
+                                            </td>
+                                            <td>Basic Admin</td>
+                                            <td><a href="http://csgo-stats.com/76561198175277497" target="_blank"><strong>STEAM_0:1:107505884
+</strong></a>
+                                            </td>
+                                            <td>
+                                                <img src="./img/bishwhet.jpg" alt="bish" style="width:48px;height:48px;">
+                                            </td>
+                                            <td><a class="btn btn-warning btn-sm" rel="publisher" href="http://moonshade.net/index.php?action=profile;u=300">🌙
+                    </a>
+                                            </td>
+                                            </tr>
+                                           
+                        </tbody>
+                    </table>
+                    </div>
+                    </div>
+                    </div>
+                    </div>
+    </body>
+
+</html>

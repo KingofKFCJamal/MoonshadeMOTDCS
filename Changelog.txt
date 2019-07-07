@@ -1,0 +1,13 @@
+9/21/15 Notes
+----------------------------------------------------------------------------
+-Got rid of Javascripts, since they really didn't do nothing.
+-Reedited Cascading Style Sheets since Dropbox would break certain links in them, breaking the pictures in them.
+-Reedited MOTD; changed server links in them.
+
+
+
+
+9/26/15 Notes
+----------------------------------------------------------------------------
+-Redid the Staff List Page
+-Changed MOTD Server list, removed ARK Server since it is not running anymore.
